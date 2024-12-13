@@ -48,7 +48,7 @@ public class CodeEntryManager : MonoBehaviour
         if (enteredCode == correctCode)
         {
             winPanel.SetActive(true);
-            inputField.gameObject.SetActive(false); // Hide the input field
+            inputField.gameObject.SetActive(false); 
         }
         else
         {

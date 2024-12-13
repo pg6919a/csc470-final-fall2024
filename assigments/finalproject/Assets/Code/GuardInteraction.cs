@@ -4,10 +4,11 @@ using TMPro;
 public class GuardInteraction : MonoBehaviour
 {
     public TMP_Text messageText;
+    public TMP_Text guardsKilledText;
     public string guardTag = "Guard";
     private float messageDuration = 2f; 
     private float messageTimer = 0f;
-
+    private static int guardsKilled = 0;  
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -20,7 +21,8 @@ public class GuardInteraction : MonoBehaviour
                 if (hit.collider.CompareTag(guardTag))
                 {
                     Destroy(hit.collider.gameObject);
-                    ShowMessage("you killed the guard");
+                    ShowMessage("You killed the guard");
+                    UpdateGuardsKilled();
                 }
             }
         }
@@ -40,5 +42,11 @@ public class GuardInteraction : MonoBehaviour
         messageText.gameObject.SetActive(true);
         messageText.text = message;
         messageTimer = messageDuration;
+    }
+
+    void UpdateGuardsKilled()
+    {
+        guardsKilled++; 
+        guardsKilledText.text = "Guards Killed: " + guardsKilled; 
     }
 }
